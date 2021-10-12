@@ -1,5 +1,10 @@
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
-install.packages("gdata");require(gdata)
+
+source("HWdata.r")
+source("MMdata.r")
 
 dados <- read.csv(file = "resources/data.csv")
-head(dados)
+teste <- read.csv(file = "resources/data_column.csv")
+
+HWdata(dados)
+
