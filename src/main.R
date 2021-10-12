@@ -1,4 +1,5 @@
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
+if(!require(gdata)) install.packages("gdata");require(gdata)
 
 source("HWdata.r")
 source("MMdata.r")
