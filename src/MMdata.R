@@ -12,7 +12,7 @@ MMdata <- function(df)
 {
   #tratmento dos dados
   df <- dados
-  df <- df[,c('Doc..Date','Material','Ship.to.nu')]
+  df <- df[,c('Doc..Date','Material','Ship.to.nu','Brand','Subrand')]
   
   df[,1] <- as.Date(df[,1])
   
@@ -23,7 +23,7 @@ MMdata <- function(df)
     arrange(desc(Freq))
   
   for (cliente in count(dfFrequencia)){
-    #dfAuxiliar <- rmvOutliers(df[df$Ship.to.nu == dfFrequencia$Var1[cliente],])
+    dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
   }
   
   #runmean
