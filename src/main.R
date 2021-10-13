@@ -1,5 +1,8 @@
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
+if(!require(forecast)) install.packages("forecast");require(forecast)
+if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(gdata)) install.packages("gdata");require(gdata)
+
 
 source("HWdata.r")
 source("MMdata.r")

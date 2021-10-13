@@ -1,7 +1,3 @@
-if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
-if(!require(forecast)) install.packages("forecast");require(forecast)
-
-
 HWdata <- function(df) #passagem do dataframe
   {
     #tratmento dos dados
