@@ -13,5 +13,5 @@ HWdata <- function(df) #passagem do dataframe
     
     plot(x.ses, col = 1, main = "l", #grafico 
          sub = "modelo SES")
-  
-}return(novodataframe)
+    return(novodataframe) 
+}
