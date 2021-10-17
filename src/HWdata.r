@@ -1,17 +1,32 @@
+rmvOutliers <- function(dataframe)#ainda precisa ser implementado
+{
+  Q <- quantile(dataframe$coluna, probs=c(.25, .75), na.rm = FALSE)
+  iqr <- IQR(dataframe$coluna)
+  sup <-  Q[2]+1.5*iqr   
+  inf<- Q[1]-1.5*iqr 
+  novoDataframe <- subset(dataframe, dataframe$coluna > (Q[1] - 1.5*iqr) & dataframe$coluna < (Q[2]+1.5*iqr))
+  return(novoDataframe)
+} 
+
 HWdata <- function(df) #passagem do dataframe
-  {
-    #tratmento dos dados
-    df <- dados
-    df <- df[,c('Doc..Date','Material','Ship.to.nu')]
-    
-    x <-  df
-    # simple exponential smoothing (SES)S
-    
-    x.ses <- ses(x, h = 12, level = c(95)) #95 é o nivel de confiaça
-    x.ses  # exibe o forecast por holt 1 parametro
-    summary(x.ses)  # fornece o relatorio da estimacao
-    
-    plot(x.ses, col = 1, main = "l", #grafico 
-         sub = "modelo SES")
-    return(novodataframe) 
+{
+  #tratmento dos dados
+  #tratmento dos dados
+  df <- dados
+  df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Brand','Subrand')]
+      
+  df[,1] <- as.Date(df[,1])
+      
+      
+  dfFrequencia <- as.data.frame(table(df$Ship.to.nu))#Frequencia dos clientes
+  dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 5,] #remocao das amostras menores que quatro
+  dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor. 
+    arrange(desc(Freq))
+     
+  for (cliente in count(dfFrequencia)){
+        dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
+  }
+      
+  novodataframe <-
+  return(novodataframe) 
 }
