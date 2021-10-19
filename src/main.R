@@ -7,7 +7,7 @@ if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 source(file = "src/HWdata.r")
 source(file = "src/MMdata.r")
 
-dadosGrande <- read.csv(file = "resources/DataGrande.csv")
+dfGrande <- read.csv(file = "resources/DataGrande.csv")
 dados <- read.csv(file = "resources/data.csv")
 colunas <- read.csv(file = "resources/data_column.csv")
 

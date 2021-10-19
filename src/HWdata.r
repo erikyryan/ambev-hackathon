@@ -8,20 +8,22 @@ rmvOutliers <- function(dataframe)#ainda precisa ser implementado
   return(novoDataframe)
 } 
 
-HWdata <- function(df) #passagem do dataframe
+HWdata <- function(dfGrande) #passagem do dataframe
 {
   #tratmento dos dados
-  #tratmento dos dados
-  df <- dados
-  df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Brand','Subrand')]
+  df <- dfGrande
+  df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Brand','Subrand','Segment.LE')]
+  df <- df %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
+    na.omit()
+  df[,1] <- as.Date(df[,1]) #Formatação da data
       
-  df[,1] <- as.Date(df[,1])
-      
-      
-  dfFrequencia <- as.data.frame(table(df$Ship.to.nu))#Frequencia dos clientes
-  dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 5,] #remocao das amostras menores que quatro
+  #Frequencia dos clientes
+  dfFrequencia <- as.data.frame(table(df$Ship.to.nu))
+  dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 8,] #remocao das amostras menores que 7
   dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor. 
     arrange(desc(Freq))
+  
+  
      
   for (cliente in count(dfFrequencia)){
         dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
