@@ -1,4 +1,5 @@
 # Otimização de Vendas Cruzadas aplicando a mineração de dados e técnicas de previsão de séries temporais
+
 ## Visão geral
 Algoritmo responsavel por otimizar as vendas cruzadas empresa, levando em consideração previsões de series temporais
 
@@ -30,6 +31,12 @@ Para tal problema foi pensado um algoritmo como solução,  o qual faria uma min
 
 
 # Equipe
+
+## Asimov
+
+O nome, Asimov, foi escolhido pensando no escritor e bioquímico norte-americano, Isaac Asimov, autor de grande obras da ficção científica, tendo uma das suas maiores obras, Fundação, baseada na queda do império romano, o autor usa conceitos estatísticos, sociais e históricos para prever um futuro distante da humanidade. Assim, por se tratar de um projeto na área de ciência de dados, na qual, busca-se sugerir a compra de produtos, tendo como base as informações do que o cliente comprou anteriormente e assim prever o volume de produção e recomendar produtos, pensou-se no uso do nome, Asimov, justamente ele ser referência na ficção científica e abordar esse aspecto da previsão.
+
+## Membros
  [<img src = "https://avatars.githubusercontent.com/u/62263916?v=4" width="115"><br><sub>Eriky Ryan</sub>](https://github.com/erikyryan) 
  
  [<img src = "https://avatars.githubusercontent.com/u/57471802?v=4" width="115"><br><sub>Davi Fernandes</sub>](https://github.com/Davizex)
