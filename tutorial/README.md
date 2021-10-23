@@ -12,19 +12,19 @@
 6. passo: Caso o quinto passo falhe, confira no seu GitHub se sua autorização de acesso é atraves de senha ou do [token](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## Passo a Passo - por imagens
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A03%3A11.png?token=ATVX5EAXIESDQ7NVSFADB5DBPNCMI" width="500"><br><sub>Passo 3</sub>
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-11.png?token=ATVX5EAXIESDQ7NVSFADB5DBPNCMI" width="500"><br><sub>Passo 3</sub>
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A03%3A44.png?token=ATVX5EHGHHVTMV6MPKCRACDBPNC4W" width="500"><br><sub>Passo 3</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-44.png?token=ATVX5EHGHHVTMV6MPKCRACDBPNC4W" width="500"><br><sub>Passo 3</sub> 
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A04%3A15.png?token=ATVX5EE4DI6VFCEP5IQMRJ3BPNDAM" width="500"><br><sub>Passo 4</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-15.png?token=ATVX5EE4DI6VFCEP5IQMRJ3BPNDAM" width="500"><br><sub>Passo 4</sub> 
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A04%3A24.png?token=ATVX5ECFKD2WLLVWFBGDYLTBPNDEW" width="500"><br><sub>Passo 4</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-24.png?token=ATVX5ECFKD2WLLVWFBGDYLTBPNDEW" width="500"><br><sub>Passo 4</sub> 
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A05%3A07.png?token=ATVX5ECBW7UTVP5VW32766TBPNDLG" width="500"><br><sub>Passo 4</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-07.png?token=ATVX5ECBW7UTVP5VW32766TBPNDLG" width="500"><br><sub>Passo 4</sub> 
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A06%3A08.png?token=ATVX5EBFUXU4KN2NCJ2E72LBPNDNE" width="500"><br><sub>Passo 5</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-08.png?token=ATVX5EBFUXU4KN2NCJ2E72LBPNDNE" width="500"><br><sub>Passo 5</sub> 
 
-<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo%20a%20passo/Captura%20de%20ecr%C3%A3%202021-10-21%2017%3A06%3A27.png?token=ATVX5EAFC4FLU5FTN5SLZKDBPNDRW" width="500"><br><sub>Passo 5</sub> 
+<img src = "https://raw.githubusercontent.com/erikyryan/ambev-hackathon/main/tutorial/passo-a-passo/Captura-de-27.png?token=ATVX5EAFC4FLU5FTN5SLZKDBPNDRW" width="500"><br><sub>Passo 5</sub> 
 
 
 # Processo de execução
