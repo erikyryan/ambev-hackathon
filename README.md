@@ -10,7 +10,7 @@ Na sociedade atual, a busca por reinvenção para os meios digitais e a busca po
 ## Proprosta de solução</h2>
 Para tal problema foi pensado um algoritmo como solução,  o qual faria uma mineração de dados, ou seja , um tratamento dos dados para determinar os dados que serão úteis para a aplicação juntamente à técnica de Holt-Winters, que proporciona ao atacadista uma melhor experiência em questão do seu crescimento comercial e um sistema de recomendações de compras, fazendo com que o mesmo sempre inove seus estoque, mas não deixe de comprar suas bebidas tradicionalismo.
 
-# Informções Técnicas
+# Informações Técnicas
 ## Gráfico explicativo
 <img src = "https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/Arquitetura.svg" width="1000"><br><sub>ARQUITETURA DO SISTEMA</sub>
 
