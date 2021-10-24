@@ -2,9 +2,32 @@ if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
   if(!require(shiny.semantic)) install.packages("shiny.semantic");require(shiny.semantic)
 
+style <- includeCSS("../resources/css/style.css")
+fontawesome <- includeCSS("../resources/css/fontawesome.min.css")
+animate <- includeCSS("../resources/css/animate.css")
+bootstrap_drop <- includeCSS("../resources/css/bootstrap-dropdownhover.min.css")
+bootstrap <- includeCSS("../resources/css/bootstrap.min.css")
+aos <- includeCSS("../resources/css/aos.css")
 
 
-principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto"
+bootstrapjs <- includeScript("../resources/js/bootstrap.min.js")
+fontawesomejs <- tags$script(src="../resources/js/fontawesome.js") 
+bootstrapdropjs <- includeScript("../resources/js/bootstrap-dropdownhover.min.js") 
+aosjs <- includeScript("../resources/js/aos.js")
+customjs <- includeScript("../resources/js/custom.js")
+
+principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto", 
+                          style = style,
+                          fontawesome = fontawesome,
+                          bootstrap_min = bootstrap,
+                          animate= animate,
+                          bootstrap_dropdownhover = bootstrap_drop,
+                          aos = aos,
+                          bootstrap_js =  bootstrapjs,
+                          fontawesome_js  = fontawesomejs,
+                          bootstrapdrop_js = bootstrapdropjs,
+                          aos_js = aosjs,
+                          custom_js = customjs
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
@@ -49,8 +72,8 @@ ui <- fluidPage(
                     )
               )
       ),
-    router$ui,
-    includeCSS("../resources/css/style.css") 
+    router$ui
+    
 )
 
 
