@@ -23,12 +23,19 @@ HWdata <- function(dfGrande) #passagem do dataframe
   dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor. 
     arrange(desc(Freq))
   
+  #criação do dataframe final
   
+  novodataframe <- data.frame(IdCliente = integer(),
+                                )
      
   for (cliente in count(dfFrequencia)){
         dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
+        
+        
+        
+        
+        
   }
-      
-  novodataframe <-
+    
   return(novodataframe) 
 }
