@@ -1,15 +1,17 @@
 if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
+  if(!require(shiny.semantic)) install.packages("shiny.semantic");require(shiny.semantic)
+
 
 
 principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto"
 )
 
-SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html"
+SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
 
 )
 
-cestaPersonalizada <- htmlTemplate(filename = "../resources/index.html"
+cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.html", document_ = "auto"
 
 )
 
@@ -21,8 +23,10 @@ router <- make_router(
 
 
 ui <- fluidPage(
-  includeCSS("../resources/css/style.css"),
-
+  titlePanel(
+    title = tags$head(tags$link(rel="icon", href="../resources/img/favicon.png")),
+),
+  
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
                     tags$a(href = route_link("/"),class="navbar-brand"),
@@ -35,12 +39,18 @@ ui <- fluidPage(
                                                tags$a(class="nav-link", href= route_link("/"),"Página Inicial")
                                       ),
                                       tags$li(class="nav-item",
-                                              tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós"))
+                                              tags$a(class="nav-link",href= route_link("cestaPersonalizada"),"Cesta personalizada")
+                                      ),
+                                      tags$li(class="nav-item",
+                                              tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós")
+                                      )
+                                  
                             )
                     )
               )
       ),
     router$ui,
+    includeCSS("../resources/css/style.css") 
 )
 
 
