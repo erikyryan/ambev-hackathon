@@ -1,6 +1,5 @@
 if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
-  if(!require(shiny.semantic)) install.packages("shiny.semantic");require(shiny.semantic)
 
 style <- includeCSS("../resources/css/style.css")
 fontawesome <- includeCSS("../resources/css/fontawesome.min.css")
@@ -67,7 +66,6 @@ ui <- fluidPage(
                                       tags$li(class="nav-item",
                                               tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós")
                                       )
-                                  
                             )
                     )
               )
