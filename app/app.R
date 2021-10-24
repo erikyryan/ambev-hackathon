@@ -39,7 +39,7 @@ cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.h
 
 router <- make_router(
   route("/", principal),
-  route("cesta-personalizada", cestaPersonalizada),
+  route("Cesta-personalizada", cestaPersonalizada),
   route("Sobre-nos", SobreNos)
 )
 
@@ -61,7 +61,7 @@ ui <- fluidPage(
                                                tags$a(class="nav-link", href= route_link("/"),"Página Inicial")
                                       ),
                                       tags$li(class="nav-item",
-                                              tags$a(class="nav-link",href= route_link("cestaPersonalizada"),"Cesta personalizada")
+                                              tags$a(class="nav-link",href= route_link("Cesta-personalizada"),"Cesta personalizada")
                                       ),
                                       tags$li(class="nav-item",
                                               tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós")
