@@ -17,7 +17,6 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           custom_js = includeScript("../resources/js/custom.js"),
                           inputButton = fileInput("dtInput", label = "O arquivo deve ser .csv", multiple = FALSE,accept = ".csv",placeholder = "Coloque o arquivo aqui"),
                           inputClient = textInput("idInput",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
-                          actionClient = actionButton()
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
