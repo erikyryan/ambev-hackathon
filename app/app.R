@@ -1,7 +1,6 @@
 if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
 
-
 principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto", 
                           style = includeCSS("../resources/css/style.css"),
                           fontawesome = includeCSS("../resources/css/fontawesome.min.css"),
@@ -32,10 +31,8 @@ router <- make_router(
 
 
 ui <- fluidPage(
-  titlePanel(
-    title = tags$head(tags$link(rel="icon", href="../resources/img/favicon.png")),
-),
-  
+  tags$head(tags$link(rel="icon", href="../resources/img/favicon.png")),
+    
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
                     tags$a(href = route_link("/"),class="navbar-brand"),
