@@ -17,13 +17,25 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           custom_js = includeScript("../resources/js/custom.js"),
                           inputButton = fileInput("dtInput", label = "O arquivo deve ser .csv", multiple = FALSE,accept = ".csv",placeholder = "Coloque o arquivo aqui"),
                           inputClient = textInput("idInput",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
+                          actionClient = actionButton()
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
 
 )
 
-cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.html", document_ = "auto"
+cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.html", document_ = "auto",
+                                   style = includeCSS("../resources/css/style.css"),
+                                   fontawesome = includeCSS("../resources/css/fontawesome.min.css"),
+                                   bootstrap_min = includeCSS("../resources/css/bootstrap.min.css"),
+                                   animate = includeCSS("../resources/css/animate.css"),
+                                   bootstrap_dropdownhover = includeCSS("../resources/css/bootstrap-dropdownhover.min.css"),
+                                   aos = includeCSS("../resources/css/aos.css"),
+                                   bootstrap_js =  includeScript("../resources/js/bootstrap.min.js"),
+                                   fontawesome_js  = tags$script(src="../resources/js/fontawesome.js"),
+                                   bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
+                                   aos_js =  includeScript("../resources/js/aos.js"),
+                                   custom_js = includeScript("../resources/js/custom.js"),
 
 )
 
