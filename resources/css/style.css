@@ -320,27 +320,6 @@ footer ul li a i {
     line-height: 32px !important;
     background: #ea4c89;
 }
-
-footer ul li a .fa-facebook {
-    background: #3b5998;
-}
-
-footer ul li a .fa-twitter {
-    background: #1da1f2;
-}
-
-footer ul li a .fa-dribbble {
-    background: #ea4c89;
-}
-
-footer ul li a .fa-behance {
-    background: #1769ff;
-}
-
-footer ul li a .fa-whatsapp {
-    background: #25d366;
-}
-
 /*===================
     responsive
 ===================*/

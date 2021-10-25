@@ -13,7 +13,8 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           fontawesome_js  = tags$script(src="../resources/js/fontawesome.js"),
                           bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
                           aos_js =  includeScript("../resources/js/aos.js"),
-                          custom_js = includeScript("../resources/js/custom.js")
+                          custom_js = includeScript("../resources/js/custom.js"),
+                          inputButton = fileInput("dtInput", label = "Coloque o CSV", multiple = FALSE,accept = ".csv",buttonLabel = "Browse...",placeholder = "No file selected")
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
@@ -32,10 +33,8 @@ router <- make_router(
 
 
 ui <- fluidPage(
-  titlePanel(
-    title = tags$head(tags$link(rel="icon", href="../resources/img/favicon.png")),
-),
-  
+  tags$head(tags$link(rel="icon", href="../resources/img/favicon.png")),
+    
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
                     tags$a(href = route_link("/"),class="navbar-brand"),
@@ -63,8 +62,11 @@ ui <- fluidPage(
 
 
 server <- function(input, output,session) {
-   router$server(input, output,session)
-    # df -> input$dtInput 
+  router$server(input, output,session)
+    
+  reactive({
+    df = input$dtInput 
+  })
 }
 
 shinyApp(ui = ui, server = server)
