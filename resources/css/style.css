@@ -163,7 +163,7 @@ li {
     header intro
 ===================*/
 .header-intro {
-    background-image: url("../img/bg-hero.png");
+    background-image: url("../resources/img/bg-hero.png");
     background-repeat: no-repeat;
     background-size: contain;
 }

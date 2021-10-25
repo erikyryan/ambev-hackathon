@@ -15,7 +15,8 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
                           aos_js =  includeScript("../resources/js/aos.js"),
                           custom_js = includeScript("../resources/js/custom.js"),
-                          inputButton = fileInput("dtInput", label = "Coloque o CSV", multiple = FALSE,accept = ".csv",buttonLabel = "Browse...",placeholder = "No file selected")
+                          inputButton = fileInput("dtInput", label = "O arquivo deve ser .csv", multiple = FALSE,accept = ".csv",placeholder = "Coloque o arquivo aqui"),
+                          inputClient = textInput("idInput",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
@@ -67,6 +68,7 @@ server <- function(input, output,session) {
     
   reactive({
     df = input$dtInput 
+    output$valorId <- renderText({input$idInput})
   })
 }
 
