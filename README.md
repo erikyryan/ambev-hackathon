@@ -3,7 +3,7 @@
 ## Visão geral
 Algoritmo responsavel por otimizar as vendas cruzadas empresa, levando em consideração previsões de series temporais
 
-[Link da Apresentação do Projeto](https://www.canva.com/design/DAEsvLl3HyQ/nICZWxahW2TLoMsMNRuuxw/view?utm_content=DAEsvLl3HyQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+[Link da Apresentação do Projeto](https://www.canva.com/design/DAEtw5uzZFo/tWwnz8HMQsGlFXBVmPkRkg/view?utm_content=DAEtw5uzZFo&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu)
 
 ## Problema
 Na sociedade atual, a busca por reinvenção para os meios digitais e a busca por prever o próximo passo do cliente vem sendo imprescindível para o crescimento de um negócio, visando a busca por ganhos. Desse modo, a  utilização técnicas de convenção de cliente, destacando entre elas a venda cruzada, isto é, o site oferece ao usuário produtos semelhantes a sua compra, aumentado o seu potencial de vendas e seus desempenho de lucro. Visto isso, se faz necessário a utilização de métodos para otimizar essa técnica das empresas.
