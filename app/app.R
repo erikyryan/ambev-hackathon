@@ -1,6 +1,8 @@
 if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
 
+options(shiny.maxRequestSize = 50*1024^2)
+
 principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto", 
                           style = includeCSS("../resources/css/style.css"),
                           fontawesome = includeCSS("../resources/css/fontawesome.min.css"),
