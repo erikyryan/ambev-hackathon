@@ -424,8 +424,8 @@ footer ul li a i {
 @media (max-width:575px) {
     .container {
         width: 100%;
-        padding-left: 30px !important;
-        padding-right: 30px !important;
+        padding-left: 0;
+        padding-right: 0;
         margin-left: auto;
         margin-right: auto;
     }
@@ -455,7 +455,7 @@ footer ul li a i {
     }
 
     .counter {
-        padding: 0 30px;
+        padding: 0 0;
     }
 
     .services .entry {
