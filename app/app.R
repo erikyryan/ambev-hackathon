@@ -15,7 +15,7 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
                           aos_js =  includeScript("../resources/js/aos.js"),
                           custom_js = includeScript("../resources/js/custom.js"),
-                          inputButton = fileInput("dtInput", label = "Coloque o arquivo aqui", multiple = FALSE,
+                          inputButton = fileInput("tidtInput", label = "Coloque o arquivo aqui", multiple = FALSE,
                                                   accept = ".csv"),
 )
 
