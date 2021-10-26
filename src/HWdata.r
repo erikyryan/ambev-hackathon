@@ -39,3 +39,4 @@ HWdata <- function(dfGrande) #passagem do dataframe
     
   return(novodataframe) 
 }
+

@@ -13,3 +13,4 @@ colunas <- read.csv(file = "resources/data_column.csv")
 
 HWdata(dados)
 MMdata(dados)
+
