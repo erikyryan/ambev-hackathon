@@ -15,8 +15,8 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
                           aos_js =  includeScript("../resources/js/aos.js"),
                           custom_js = includeScript("../resources/js/custom.js"),
-                          inputButton = fileInput("dtInput", label = "O arquivo deve ser .csv", multiple = FALSE,accept = ".csv",placeholder = "Coloque o arquivo aqui"),
-                          inputClient = textInput("idInput",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
+                          inputButton = fileInput("dtInput", label = "Coloque o arquivo aqui", multiple = FALSE,
+                                                  accept = ".csv"),
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
@@ -35,6 +35,10 @@ cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.h
                                    bootstrapdrop_js = includeScript("../resources/js/bootstrap-dropdownhover.min.js"),
                                    aos_js =  includeScript("../resources/js/aos.js"),
                                    custom_js = includeScript("../resources/js/custom.js"),
+                                   inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,
+                                                           accept = ".csv"),
+                                   inputClientCP = textInput("idInputCP",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
+                                   
 
 )
 
@@ -69,6 +73,7 @@ ui <- fluidPage(
                     )
               )
       ),
+  
     router$ui
     
 )
@@ -79,7 +84,6 @@ server <- function(input, output,session) {
     
   reactive({
     df = input$dtInput 
-    output$valorId <- renderText({input$idInput})
   })
 }
 
