@@ -62,3 +62,4 @@ HWdata <- function(dfGrande) #passagem do dataframe
   return(PlotHW) 
 }
 
+

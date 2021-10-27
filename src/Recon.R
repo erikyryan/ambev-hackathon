@@ -13,6 +13,10 @@ str(quantidade_de_bebidas)
 data.table(bebidas_data)
 data.table(quantidade_de_bebidas)
 
+sumary(bebidas_data)
+sumary(quantidade_de_bebidas)
+
+
 bebidas_tipos <- as.data.frame(bebidas_data$bebida, stringsAsFactors = FALSE)
 bebidas_tipos2 <- tstrsplit(bebidas_tipos[,1],"[|]", type.convert = TRUE)
 
@@ -49,3 +53,6 @@ head(buscar_bebida)
 
 #sparse matrix para recomendação
 #quantidade_matrix <- dcast(quantidade_de_bebidas, )
+
+quantidade_matrix <- dcast(quantidade_de_bebidas)
+
