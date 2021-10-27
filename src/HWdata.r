@@ -2,6 +2,8 @@ if(!require(lubridate)) install.packages("lubridate");require(lubridate)
 if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
+if(!require(htmlwidgets)) install.packages("htmlwidgets");require(htmlwidgets)
+if(!require(webshot)) install.packages("webshot");require(webshot)
 
 
 HWdata <- function(dfGrande) #passagem do dataframe
@@ -35,6 +37,12 @@ HWdata <- function(dfGrande) #passagem do dataframe
     dySeries("dfTs", label = "Atual") %>%
     dySeries(c("hwPredict.fit", "hwPredict.upr", "hwPredict.lwr"), label = "Previs")
   
+  saveWidget(PlotHW,"temp.html", selfcontained = FALSE)
+  width<- 1080
+  height <- 610
+  webshot("temp.html", file = "plotHW.png",
+          cliprect = c(10,30,width+50,height+50)
+          ,vwidth = width, vheight = height )
   #tratmento dos dados
   # df <- dfGrande
   # df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Brand','Subrand','Segment.LE')]
@@ -50,6 +58,7 @@ HWdata <- function(dfGrande) #passagem do dataframe
   # #criação do dataframe final
   # for (cliente in count(dfFrequencia)){
   #       dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]}
+  
   return(PlotHW) 
 }
 
