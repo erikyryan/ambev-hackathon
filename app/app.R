@@ -85,10 +85,15 @@ server <- function(input, output,session) {
   router$server(input, output,session)
     
   reactive({
-    df = input$dtInput
-    
-    output$Hwplot <- HWdata(df)
+    df <- input$dtInput
+    if(!is.null(df)){
+    read.csv(df$datapath, header = input$header, stringsAsFactors = FALSE)    
+    }
   })
+  output$Hwplot <- renderPlot({
+    HWdata(df)
+  })
+  
 }
 
 shinyApp(ui = ui, server = server)
