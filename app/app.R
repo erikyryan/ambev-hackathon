@@ -2,6 +2,7 @@ if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
 
 options(shiny.maxRequestSize = 50*1024^2)
+source("../src/HWdata.r")
 
 principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto", 
                           style = includeCSS("../resources/css/style.css"),
@@ -17,6 +18,7 @@ principal <- htmlTemplate(filename = "../resources/index.html", document_ = "aut
                           custom_js = includeScript("../resources/js/custom.js"),
                           inputButton = fileInput("tidtInput", label = "Coloque o arquivo aqui", multiple = FALSE,
                                                   accept = ".csv"),
+                          HWplot = plotOutput('HWplot')
 )
 
 SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
@@ -83,7 +85,9 @@ server <- function(input, output,session) {
   router$server(input, output,session)
     
   reactive({
-    df = input$dtInput 
+    df = input$dtInput
+    
+    output$Hwplot <- HWdata(df)
   })
 }
 
