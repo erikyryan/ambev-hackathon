@@ -13,37 +13,28 @@ HWdata <- function(dfGrande) #passagem do dataframe
   df <- df[,c("Doc..Date","Order.qty")]
   df[,1] <- as.Date(df[,1])   #Formatação da data
   df <- aggregate(df$Order.qty, by=list(Category=df$Doc..Date), FUN=sum)
-  df$Category <- as.Date(df$Category)
+  df <- df[df$x >= 25,]
+  df$Category <- ymd(date(df$Category))
   
-  CicloTemporal <- as.integer(count(df)) #contagem da amostra temporal
+  df$Category <- strptime(df$Category, "%Y-%m-%d" )
+  df$Category <- as.POSIXct(df$Category)
+  
+  df$x <- as.numeric(df$x)
+  df <- mutate(df, MonthYear = paste(year(Category),formatC(month(Category), width = 2, flag = "0")))
 
-  if(CicloTemporal >= 365)#anual
-  {
-    frequenciaTS = 1
-  }
-  else if(CicloTemporal >= 91)#trimestral
-  {
-    frequenciaTS = 4
-  }
-  else if(CicloTemporal >= 30)#mensal
-  {
-    frequenciaTS = 12
-  }
-  else  #menor que 1 mes é usado 1 semana
-  {    
-    frequenciaTS = 52
-  }    
-    
+  df <- select(df,-Category,-MonthYear)
+  
+  dfTs <- ts(df,frequency = 12) #TS em séries de 1 mês
   
   #formação do gráfico
   hw <- HoltWinters(dfTs)
-  p <- predict(hw, n.ahead = 36, prediction.interval = TRUE)
-  all <- cbind(ldeaths, p)
+  hwPredict <- predict(hw,48)
+  all <- cbind(dfTs, hwPredict)
   
-  PlotHW <- dygraph(all, "Deaths from Lung Disease (UK)") %>%
-    dySeries("ldeaths", label = "Actual") %>%
-    dySeries(c("p.lwr", "p.fit", "p.upr"), label = "Predicted")
-    
+  PlotHW <- dygraph(all, "Previsão de Demanda") %>%
+    dySeries("dfTs", label = "Atual") %>%
+    dySeries("hwPredict", label = "Previsão")
+  
   #tratmento dos dados
   # df <- dfGrande
   # df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Brand','Subrand','Segment.LE')]
