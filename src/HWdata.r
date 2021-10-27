@@ -28,12 +28,12 @@ HWdata <- function(dfGrande) #passagem do dataframe
   
   #formação do gráfico
   hw <- HoltWinters(dfTs)
-  hwPredict <- predict(hw,48)
+  hwPredict <- predict(hw, n.ahead = 36, prediction.interval = TRUE)
   all <- cbind(dfTs, hwPredict)
   
   PlotHW <- dygraph(all, "Previsao de Demanda") %>%
     dySeries("dfTs", label = "Atual") %>%
-    dySeries("hwPredict", label = "Previsão")
+    dySeries(c("hwPredict.fit", "hwPredict.upr", "hwPredict.lwr"), label = "Previs")
   
   #tratmento dos dados
   # df <- dfGrande
