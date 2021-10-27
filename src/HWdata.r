@@ -6,7 +6,7 @@ if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 
 HWdata <- function(dfGrande) #passagem do dataframe
 {
-  df <- dfGrande
+  df <- dfGrande 
   df <- df %>%    #Limpeza de dados
     mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% 
     na.omit()

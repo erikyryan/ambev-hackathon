@@ -5,8 +5,8 @@ options(shiny.maxRequestSize = 50*1024^2)
 source("../src/HWdata.r")
 
 principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
-                          inputButton = fileInput("tidtInput",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
-                          HWplot = plotOutput('HWplot')
+                          inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
+                          HWplot = plotOutput(outputId = "HWplot", click = NULL),
                           
 )
 
@@ -64,14 +64,15 @@ server <- function(input, output,session) {
   router$server(input, output,session)
     
   reactive({
-    df <- input$dtInput
+    df <- input$inputButton
+    
     if(!is.null(df)){
-    read.csv(df$datapath, header = input$header, stringsAsFactors = FALSE)    
+      return(NULL)
+    #read.csv(df$datapath, header = input$header, stringsAsFactors = FALSE)    
     }
   })
-  output$Hwplot <- renderPlot({
-    HWdata(df)
-  })
+  
+  output$HWplot <- renderPlot(HWdata(df))
   
 }
 
