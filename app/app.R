@@ -6,7 +6,7 @@ source("../src/HWdata.r")
 
 principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
                           inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
-                          HWplot = plotOutput(outputId = "HWplot", click = NULL),
+                          HWplot = plotOutput(outputId = "HWplot"),
                           
 )
 
@@ -62,17 +62,21 @@ ui <- fluidPage(
 
 server <- function(input, output,session) {
   router$server(input, output,session)
-    
-  reactive({
-    df <- input$inputButton
-    
-    if(!is.null(df)){
-      return(NULL)
-    #read.csv(df$datapath, header = input$header, stringsAsFactors = FALSE)    
-    }
+  
+  df <- reactive({
+    req(input$inputButton, file.exists(input$inputButton$datapath))
+    read.csv(input$inputButton$datapath)      
+      # input$file1 will be NULL initially. After the user selects
+      # and uploads a file, it will be a data frame with 'name',
+      # 'size', 'type', and 'datapath' columns. The 'datapath'
+      # column will contain the local filenames where the data can
+      # be found.
   })
   
-  output$HWplot <- renderPlot(HWdata(df))
+  output$HWplot <- renderPlot({
+    req(df())
+    HWdata(df())
+  })
   
 }
 

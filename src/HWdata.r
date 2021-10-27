@@ -31,7 +31,7 @@ HWdata <- function(dfGrande) #passagem do dataframe
   hwPredict <- predict(hw,48)
   all <- cbind(dfTs, hwPredict)
   
-  PlotHW <- dygraph(all, "Previsão de Demanda") %>%
+  PlotHW <- dygraph(all, "Previsao de Demanda") %>%
     dySeries("dfTs", label = "Atual") %>%
     dySeries("hwPredict", label = "Previsão")
   
