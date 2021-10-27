@@ -4,17 +4,17 @@ if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router
 options(shiny.maxRequestSize = 50*1024^2)
 source("../src/HWdata.r")
 
-principal <- htmlTemplate(filename = "../resources/index.html", document_ = "auto", 
+principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
                           inputButton = fileInput("tidtInput",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
                           HWplot = plotOutput('HWplot')
                           
 )
 
-SobreNos <- htmlTemplate(filename = "../resources/aboutUs.html", document_ = "auto"
+SobreNos <- htmlTemplate(filename = "../app/www/aboutUs.html", document_ = "auto"
 
 )
 
-cestaPersonalizada <- htmlTemplate(filename = "../resources/cestaPersonalizada.html", document_ = "auto",
+cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.html", document_ = "auto",
                                    inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,
                                                            accept = ".csv"),
                                    inputClientCP = textInput("idInputCP",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
