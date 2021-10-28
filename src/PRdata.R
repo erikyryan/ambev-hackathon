@@ -5,23 +5,53 @@ if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 
 
-function(dataframe)
+function(dataframe,IdCliente)
 {
-  dataframe <- dfGrande
-  df <- dataframe
-  df <- df[,c('Doc..Date','Material','Order.qty','Ship.to.nu','Subrand','Segment.LE')]
-  df <- df %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
+  dataframe <- dfGrande <- read.csv(file = "resources/DataGrande.csv")
+  dataframe <- dataframe[,c('Doc..Date','Ship.to.nu','Subrand','Segment.LE')]
+  dataframe <- dataframe %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
      na.omit()
-  df[,1] <- as.Date(df[,1]) #Formatação da data
+  dataframe[,1] <- as.Date(dataframe[,1]) #Formatação da data
   
-  df$Subrand <- paste(df$Subrand,df$Segment.LE)
-  df <- select(df,-Segment.LE)
+  dataframe$Subrand <- paste(dataframe$Subrand,dataframe$Segment.LE)
+  dataframe <- select(dataframe,-Segment.LE)
+  
+  dataframe <- subset(dataframe,dataframe$Ship.to.nu == IdCliente)
+  
+  DatesUnique <- unique(dataframe$Doc..Date)
+  
+  dfConsumo <- data.frame(Dias = character())
+  
+  
+  for (i in 1:length(unique(dataframe$Doc..Date))){
+    dfaux <- subset(dataframe,dataframe$Doc..Date == DatesUnique[i])  
+    
+    dfaux <- dfaux[!duplicated(dfaux$Subrand),]#remove colunas com bebidas repetidas
+      dfaux$Subrand <-gsub(" ", "", dfaux$Subrand,ignore.case = TRUE)
+    dfConsumo[i,] <-  paste(dfaux$Subrand,collapse = " ")
+  }
+  
+  
+  df <- transactions(dfConsumo,
+                          sep = "--",
+                          format = "basket",)
+  
   
      #Frequencia dos clientes
-  dfFrequencia <- as.data.frame(table(df$Ship.to.nu))
-  dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 8,] #remocao das amostras menores que 7
-  dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor.
-    arrange(desc(Freq))
+  # dfFrequencia <- as.data.frame(table(df$Subrand))
+  # dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 8,] #remocao das amostras menores que 7
+  # dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor.
+  #   arrange(desc(Freq))
+  # dfTranspose <-as.data.frame(t(dfFrequencia))
+  # 
+  # regras <- apriori(
+  #   dfTranspose,
+  #   parameter = list(support = 0.2,
+  #                    confidence = 0.50,
+  #                    mimlen = 2,
+  #                    maxlen = 2) #
+  # )
+  
    
   for (cliente in count(dfFrequencia)){
       dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
