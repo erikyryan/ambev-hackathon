@@ -30,6 +30,9 @@ Para tal problema foi pensado um algoritmo como solução,  o qual faria `Data m
   5. lubridate - facilita a transformação e extração de datas
   6. dygraphs - interface R para a biblioteca grafica do JavaScrip, responsavel por gerar gráficos de séries temporais.
   7. arules - facilita a manipulação e analise de dados e padrões de trasações(conjuntos de itens frequentes e regras de associação).
+  8. arulesViz -
+  9. tidyverse -
+  10. htmlwidgets -
 
 ## Processo de instalação e execução
 [INSTLAÇÃO](https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/README.md)
