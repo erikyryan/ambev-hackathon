@@ -18,8 +18,7 @@ cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.htm
                                    inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,
                                                            accept = ".csv"),
                                    inputClientCP = textInput("idInputCP",label = "Digite o Id:",width = validateCssUnit("25%")),
-                                   
-
+                                   PRplot = htmlOutput("PRplot",inline = FALSE),
 )
 
 router <- make_router(
@@ -66,11 +65,6 @@ server <- function(input, output,session) {
   df <- reactive({
     req(input$inputButton, file.exists(input$inputButton$datapath))
     read.csv(input$inputButton$datapath)      
-      # input$file1 will be NULL initially. After the user selects
-      # and uploads a file, it will be a data frame with 'name',
-      # 'size', 'type', and 'datapath' columns. The 'datapath'
-      # column will contain the local filenames where the data can
-      # be found.
   })
   
   output$HWplot <- renderUI({
@@ -78,6 +72,19 @@ server <- function(input, output,session) {
     HWdata(df())
   })
   
+  
+  PRdf <- reactive({
+    req(input$inputFileCP, file.exists(input$inputFileCP$datapath))
+    read.csv(input$inputFileCP$datapath)
+    })
+  output$PRplot <- renderUI({
+    req(PRdf())
+    HWdata(PRdf(),)
+  })
+  
+  ClienteID <-reactive({
+    input$idInputCP
+  })
 }
 
 shinyApp(ui = ui, server = server)
