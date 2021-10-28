@@ -1,7 +1,7 @@
 # Otimização de Vendas Cruzadas aplicando a mineração de dados e técnicas de previsão de séries temporais
 
 ## Visão geral
-Algoritmo responsavel por otimizar as vendas cruzadas empresa, levando em consideração previsões de series temporais
+Aplicação responsavel por otimizar as vendas cruzadas por meio do algoritmo `Apriore` , e prever a quantidade total de produtos,, por intermedio do método `Holt Winter`
 
 [Link da Apresentação do Projeto](https://www.canva.com/design/DAEtw5uzZFo/tWwnz8HMQsGlFXBVmPkRkg/view?utm_content=DAEtw5uzZFo&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu)
 
