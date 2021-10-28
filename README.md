@@ -8,8 +8,8 @@ Algoritmo responsavel por otimizar as vendas cruzadas empresa, levando em consid
 ## Problema
 Na sociedade atual, a busca por reinvenção para os meios digitais e a busca por prever o próximo passo do cliente vem sendo imprescindível para o crescimento de um negócio, visando a busca por ganhos. Desse modo, a  utilização técnicas de convenção de cliente, destacando entre elas a venda cruzada, isto é, o site oferece ao usuário produtos semelhantes a sua compra, aumentado o seu potencial de vendas e seus desempenho de lucro. Visto isso, se faz necessário a utilização de métodos para otimizar essa técnica das empresas.
 
-## Proprosta de solução</h2>
-Para tal problema foi pensado um algoritmo como solução,  o qual faria uma mineração de dados, ou seja , um tratamento dos dados para determinar os dados que serão úteis para a aplicação juntamente à técnica de Holt-Winters, que proporciona ao atacadista uma melhor experiência em questão do seu crescimento comercial e um sistema de recomendações de compras, fazendo com que o mesmo sempre inove seus estoque, mas não deixe de comprar suas bebidas tradicionalismo.
+## Proprosta de solução
+Para tal problema foi pensado um algoritmo como solução,  o qual faria `Data mining` , ou seja , um tratamento dos dados para determinar os que serão úteis para a aplicação. Com o resultado dessa manutenção é aplicado o método `Holt Witer`, com o intuito de disponibilizar aos fornecedores uma estimativa média da quantidade de bebidas que seus atacadista irão precisar. Além disso, como forma de elevar a quantidade de transações, é feito, por meio do algoritimo `apriore` uma regra de negocio, a qual corressponde que se o cliente comprar mais a bebida A ele tem mais chances de levar a bebida B, proprorcionnando assim aos fornecedores a opção de fazer ofertas personalizadas para cada cliente.
 
 # Informações Técnicas
 ## Gráfico explicativo
@@ -22,7 +22,14 @@ Para tal problema foi pensado um algoritmo como solução,  o qual faria uma min
     * Front end - R , Git, HTML, CSS e JavaScript
 * Ambiente Virtual - Rstudio e Vscode
 * Arquivos de dados - a linguagem de marcação dos dados deve ser CSV, modelo: `nomedoarquivo.csv`
-* Biblioteca - 
+* Biblioteca 
+  1. shiny - facilita a contrução de aplicativos web interativos
+  2. shiny.router - facilita a mapeação dos arquivos em HTML, funciona juntamente ao shiny.
+  3. gdata - facilita a manipulção de dados, como conversão de unidades mêdicas, operações com vetores, entrre outras
+  4. dplyr - facilita a transformações de dados
+  5. lubridate - facilita a transformação e extração de datas
+  6. dygraphs - interface R para a biblioteca grafica do JavaScrip, responsavel por gerar gráficos de séries temporais.
+  7. arules - facilita a manipulação e analise de dados e padrões de trasações(conjuntos de itens frequentes e regras de associação).
 
 ## Processo de instalação e execução
 [INSTLAÇÃO](https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/README.md)
