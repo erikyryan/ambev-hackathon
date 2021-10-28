@@ -6,7 +6,7 @@ source("../src/HWdata.r")
 
 principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
                           inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
-                          HWplot = plotOutput(outputId = "HWplot"),
+                          HWplot =  htmlOutput("HWplot",inline = FALSE),
                           
 )
 
@@ -17,7 +17,7 @@ SobreNos <- htmlTemplate(filename = "../app/www/aboutUs.html", document_ = "auto
 cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.html", document_ = "auto",
                                    inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,
                                                            accept = ".csv"),
-                                   inputClientCP = textInput("idInputCP",label = "Digite o Id do cliente",width = validateCssUnit("25%")),
+                                   inputClientCP = textInput("idInputCP",label = "Digite o Id:",width = validateCssUnit("25%")),
                                    
 
 )
@@ -73,7 +73,7 @@ server <- function(input, output,session) {
       # be found.
   })
   
-  output$HWplot <- renderPlot({
+  output$HWplot <- renderUI({
     req(df())
     HWdata(df())
   })
