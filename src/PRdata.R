@@ -1,8 +1,10 @@
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
+if(!require(arulesViz)) install.packages("arulesViz");require(arulesViz)
 if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(arules)) install.packages("arules");require(arules)
 if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
+
 
 
 function(dataframe,IdCliente)
@@ -20,7 +22,7 @@ function(dataframe,IdCliente)
   
   DatesUnique <- unique(dataframe$Doc..Date)
   
-  dfConsumo <- data.frame(Dias = character())
+  dfConsumo <- data.frame(consumo = character())
   
   
   for (i in 1:length(unique(dataframe$Doc..Date))){
@@ -31,31 +33,40 @@ function(dataframe,IdCliente)
     dfConsumo[i,] <-  paste(dfaux$Subrand,collapse = " ")
   }
   
+  write.table(dfConsumo,file ="app/www/tempPR.csv", row.names = F,col.names=F)
+  teste <- read.table("app/www/tempPR.csv")
   
-  df <- transactions(dfConsumo,
-                          sep = "--",
+  df <- read.transactions("app/www/tempPR.csv",
                           format = "basket",)
+                          
+  df
+  
+  regras <- apriori(
+                    df,
+                    parameter = list(support = 0.2,
+                                     confidence = 0.5,
+                                     minlen =2,
+                                     maxlen = 2)
+                    )
+  
+  plot(regras,method = "graph",engine = "htmlwidget",max = 300)
+  
+  #delete do arquivo temp
+  file.remove("app/www/tempPR.csv")
+  
+  # df <- read.transactions(dfConsumo,
+  #                         format = "basket",
+  #                         quote = " ")
   
   
      #Frequencia dos clientes
-  # dfFrequencia <- as.data.frame(table(df$Subrand))
+  # dfFrequencia <- as.data.frame(table(dataframe$Ship.to.nu))
   # dfFrequencia <- dfFrequencia[dfFrequencia$Freq >= 8,] #remocao das amostras menores que 7
   # dfFrequencia <- dfFrequencia %>% #ordena Frequencia do maior para o menor.
   #   arrange(desc(Freq))
-  # dfTranspose <-as.data.frame(t(dfFrequencia))
+  # # dfTranspose <-as.data.frame(t(dfFrequencia))
   # 
-  # regras <- apriori(
-  #   dfTranspose,
-  #   parameter = list(support = 0.2,
-  #                    confidence = 0.50,
-  #                    mimlen = 2,
-  #                    maxlen = 2) #
-  # )
-  
-   
-  for (cliente in count(dfFrequencia)){
-      dfAuxiliar <- df[df$Ship.to.nu == dfFrequencia$Var1[cliente],]
-  }
-  
+
+
   return()
 }
