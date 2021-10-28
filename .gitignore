@@ -30,3 +30,5 @@ vignettes/*.pdf
 #RDataTmp
 .RData
 .RDataTmp
+temp.html
+temp_files

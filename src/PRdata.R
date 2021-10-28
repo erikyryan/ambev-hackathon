@@ -7,11 +7,9 @@ if(!require(arules)) install.packages("arules");require(arules)
 if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 
-
-
-function(dataframe,IdCliente)
+function(dfGrande,IdCliente)
 {
-  dataframe <- dfGrande <- read.csv(file = "resources/DataGrande.csv")
+  dataframe <- dfGrande 
   dataframe <- dataframe[,c('Doc..Date','Ship.to.nu','Subrand','Segment.LE')]
   dataframe <- dataframe %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
      na.omit()
