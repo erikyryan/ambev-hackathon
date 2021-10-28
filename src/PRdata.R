@@ -1,9 +1,11 @@
+if(!require(tidyverse)) install.packages("tidyverse");require(tidyverse)
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
 if(!require(arulesViz)) install.packages("arulesViz");require(arulesViz)
 if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(arules)) install.packages("arules");require(arules)
 if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
+
 
 
 
@@ -22,7 +24,7 @@ function(dataframe,IdCliente)
   
   DatesUnique <- unique(dataframe$Doc..Date)
   
-  dfConsumo <- data.frame(consumo = character())
+  dfConsumo <- data.frame(Consumo = character())
   
   
   for (i in 1:length(unique(dataframe$Doc..Date))){
@@ -33,7 +35,19 @@ function(dataframe,IdCliente)
     dfConsumo[i,] <-  paste(dfaux$Subrand,collapse = " ")
   }
  
-  #criação do objeto transacional 
+  #criação do objeto transacional
+  mutate(dfConsumo, Id = 1:n()) %>% 
+    pivot_longer(cols = contains("Consumo"),values_to = "product") %>% 
+    filter(complete.cases(product)) %>% 
+    mutate(product = factor(product)) %>% 
+    group_by(Id) %>% 
+    summarize(whatever = list(product)) -> df
+  
+  names(df$whatever) <- df$Id
+  
+  mydf <- as(df$whatever,"transactions")
+  
+  
 
   
  
