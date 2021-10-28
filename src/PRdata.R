@@ -32,15 +32,11 @@ function(dataframe,IdCliente)
       dfaux$Subrand <-gsub(" ", "", dfaux$Subrand,ignore.case = TRUE)
     dfConsumo[i,] <-  paste(dfaux$Subrand,collapse = " ")
   }
+ 
+  #criação do objeto transacional 
+
   
-  write.table(dfConsumo,file ="app/www/tempPR.csv", row.names = F,col.names=F)
-  teste <- read.table("app/www/tempPR.csv")
-  
-  df <- read.transactions("app/www/tempPR.csv",
-                          format = "basket",)
-                          
-  df
-  
+ 
   regras <- apriori(
                     df,
                     parameter = list(support = 0.2,
