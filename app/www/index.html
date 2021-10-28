@@ -1,5 +1,5 @@
   <!DOCTYPE html>
-<html lang="zxx">
+<html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +13,58 @@
 
 	</head>
 	<body>
-		
-		<div class="header-intro">
+
+		<div class=" about-us">
 			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-md-6 entry" data-aos="fade-right">
-						  <h2>A aplicação Asimov</h2>
-						  <p>A aplicação em questão tem como intuito gerar um conjunto de dados para os fornecedores que corresponde à quantidade de bebidas estimada para as temporadas futuras, já para os atacadistas é feito uma seleção de produtos baseados nas suas compras, as cestas personalizada</p>
-							<span>Importe O Data Frame</span>
-					   	{{inputButton}}
+				<div class="row">
+					<div class="col-6 align-items-left entry" data-aos="fade-right" >	
+						<h2>Problema</h2>
+						<p>Na sociedade atual, a busca por reinvenção para os meios digitais e a busca por prever o próximo passo do cliente vem sendo 
+						imprescindível para o crescimento de um negócio, visando a busca por ganhos. Desse modo, a utilização técnicas de convenção de 
+						liente, destacando entre elas a venda cruzada, isto é, o site oferece ao usuário produtos semelhantes a sua compra, aumentado o 
+						seu potencial de vendas e seus desempenho de lucro. Visto isso, se faz necessário a utilização de métodos para otimizar essa técnica 
+						das empresas.</p>
 					</div>
-					<div class="col-md-2 entry" data-aos="fade-left">
-						  {{HWplot}}
+					<div class="col-6 entry" data-aos="fade-left"><img src="img/pg-inicial-1.jpg" width="500" height="500"></div>
+				</div>
+			</div>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 entry">
+						<img src="img/pg-inicial-2.png" width="500" height="500">
+					</div>
+					<div class="col-md-6 entry" data-aos="fade-left">
+						<h2>Solução proposta </h2>
+						<p> Para tal problema foi pensado um algoritmo como solução, o qual faria Data mining , ou seja , um tratamento dos dados para determinar os que serão úteis para a aplicação. Com o resultado dessa manutenção é aplicado o método Holt Witer, com o intuito de disponibilizar aos fornecedores uma estimativa média da quantidade de bebidas que seus atacadista irão precisar. Além disso, como forma de elevar a quantidade de transações, é feito, por meio do algoritimo apriore uma regra de negocio, a qual corressponde que se o cliente comprar mais a bebida A ele tem mais chances de 
+						levar a bebida B, proprorcionnando assim aos fornecedores a opção de fazer ofertas personalizadas para cada cliente.</p>
 					</div>
 				</div>
 			</div>
+			
+			<div class="container">
+					<div class="row ">			
+						<div class="col-md-12 entry" data-aos="fade-right">
+							<center> <h2>Holt-Winters</h2>
+							
+							<p>O algoritmo Holt-Winters é uma das técnicas de previsão mais populares para séries temporais.</p>
+							<span>Importe O Data Frame</span>
+							{{inputButton}}
+
+							<center>
+						</div><br>
+					</div>
+			</div>
+		</div>	
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 entry" data-aos="fade-left">	{{HWplot}}	</div>
+			</div>
 		</div>
+		
 
-
-	  <script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<script src="js/fontawesome.js"></script>
 		<script src="js/bootstrap-dropdownhover.min.js"></script>
 		<script src="js/aos.js"></script>
