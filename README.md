@@ -13,7 +13,7 @@ Para tal problema foi pensado um algoritmo como solução,  o qual faria `Data m
 
 # Informações Técnicas
 ## Gráfico explicativo
-<img src = "https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/Arquitetura.svg" width="1000"><br><sub>ARQUITETURA DO SISTEMA</sub>
+<img src = "https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/arquitetura.png" width="1000"><br><sub>ARQUITETURA DO SISTEMA</sub>
 
 ## Pré-requisitos
 * Sistema Operacional - Linux, Windows, MacOs
