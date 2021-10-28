@@ -30,9 +30,9 @@ Para tal problema foi pensado um algoritmo como solução,  o qual faria `Data m
   5. lubridate - facilita a transformação e extração de datas
   6. dygraphs - interface R para a biblioteca grafica do JavaScrip, responsavel por gerar gráficos de séries temporais.
   7. arules - facilita a manipulação e analise de dados e padrões de trasações(conjuntos de itens frequentes e regras de associação).
-  8. arulesViz -
-  9. tidyverse -
-  10. htmlwidgets -
+  8. arulesViz -  facilita a visualização para regras de associação e conjuntos de itens.
+  9. tidyverse - facilita a reutilização de estruturas de dados existentes, organização de funções simples usando o pipe e adesão à programação funcional.
+  10. htmlwidgets - facilita criação de widgets HTML que são renderizados em vários contextos, incluindo o console R, documentos 'R Markdown' e aplicativos da web 'Shiny'.estrutura para a criação de widgets HTML que são renderizados em vários contextos, incluindo o console R, documentos 'R Markdown' e aplicativos da web 'Shiny'.
 
 ## Processo de instalação e execução
 [INSTLAÇÃO](https://github.com/erikyryan/ambev-hackathon/blob/main/tutorial/README.md)
