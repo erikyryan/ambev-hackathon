@@ -1,6 +1,5 @@
 if(!require(lubridate)) install.packages("lubridate");require(lubridate)
 if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
-if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 if(!require(htmlwidgets)) install.packages("htmlwidgets");require(htmlwidgets)
 

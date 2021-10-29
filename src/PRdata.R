@@ -4,15 +4,14 @@ if(!require(lubridate)) install.packages("lubridate");require(lubridate)
 if(!require(arulesViz)) install.packages("arulesViz");require(arulesViz)
 if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(arules)) install.packages("arules");require(arules)
-if(!require(gdata)) install.packages("gdata");require(gdata)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 
-function(dfGrande,IdCliente)
+PRdata <- function(dfGrande,IdCliente)
 {
   dataframe <- dfGrande 
   dataframe <- dataframe[,c('Doc..Date','Ship.to.nu','Subrand','Segment.LE')]
   dataframe <- dataframe %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
-     na.omit()
+    na.omit()
   dataframe[,1] <- as.Date(dataframe[,1]) #Formatação da data
   
   dataframe$Subrand <- paste(dataframe$Subrand,dataframe$Segment.LE)
@@ -29,7 +28,7 @@ function(dfGrande,IdCliente)
     dfaux <- subset(dataframe,dataframe$Doc..Date == DatesUnique[i])  
     
     dfaux <- dfaux[!duplicated(dfaux$Subrand),]#remove colunas com bebidas repetidas
-      dfaux$Subrand <-gsub(" ", "", dfaux$Subrand,ignore.case = TRUE)
+    dfaux$Subrand <-gsub(" ", "", dfaux$Subrand,ignore.case = TRUE)
     dfConsumo[i,] <-  paste(dfaux$Subrand,collapse = " ")#
   }
   
@@ -48,16 +47,15 @@ function(dfGrande,IdCliente)
   names(df$whatever) <- df$Id
   
   mydf <- as(df$whatever,"transactions")
-
-    regras <- apriori(
-                      mydf,
-                      parameter = list(support = 0.2,
-                                       confidence = 0.5,
-                                       minlen =2,
-                                       maxlen = 5)
-                      )
   
-  plotFinal <- plot(regras,method = "graph",engine = "htmlwidget",max = 300)
-  saveWidget(plotFinal,"tempPR.html", selfcontained = FALSE)
+  regras <- apriori(
+    mydf,
+    parameter = list(support = 0.2,
+                     confidence = 0.5,
+                     minlen =2,
+                     maxlen = 5)
+  )
+  
+  plotFinal <- plot(regras,method = "graph",engine = "htmlwidget")
   return(plotFinal)
 }

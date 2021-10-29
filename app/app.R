@@ -2,7 +2,9 @@ if(!require(shiny)) install.packages("shiny");require(shiny)
 if(!require(shiny.router)) install.packages("shiny.router");require(shiny.router)
 
 options(shiny.maxRequestSize = 50*1024^2)
+
 source("../src/HWdata.r")
+source("../src/PRdata.r")
 
 principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
                           inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
@@ -15,9 +17,8 @@ SobreNos <- htmlTemplate(filename = "../app/www/aboutUs.html", document_ = "auto
 )
 
 cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.html", document_ = "auto",
-                                   inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,
-                                                           accept = ".csv"),
-                                   inputClientCP = textInput("idInputCP",label = "Digite o Id:",width = validateCssUnit("25%")),
+                                   inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,accept = ".csv"),
+                                   inputClientCP = numericInput("idInputCP",label = "Digite o Id:",value=0,width = validateCssUnit("25%")),
                                    PRplot = htmlOutput("PRplot",inline = FALSE),
 )
 
@@ -30,7 +31,7 @@ router <- make_router(
 
 ui <- fluidPage(
   
-  tags$head(tags$link(rel="icon", href="img/favicon.ico")),
+  tags$head(tags$link(rel="icon", href="www/img/favicon.ico")),
     
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
@@ -53,9 +54,7 @@ ui <- fluidPage(
                     )
               )
       ),
-  
     router$ui
-    
 )
 
 
@@ -72,18 +71,24 @@ server <- function(input, output,session) {
     HWdata(df())
   })
   
+  #########################
   
-  PRdf <- reactive({
-    req(input$inputFileCP, file.exists(input$inputFileCP$datapath))
-    read.csv(input$inputFileCP$datapath)
-    })
-  output$PRplot <- renderUI({
-    req(PRdf())
-    HWdata(PRdf(),)
+  dfPR <- reactive({
+    req(input$dtInputCP, file.exists(input$dtInputCP$datapath))
+    read.csv(input$dtInputCP$datapath)      
   })
   
-  ClienteID <-reactive({
-    input$idInputCP
+  values <-reactiveValues()
+  
+  observeEvent(eventExpr = input$idInputCP,
+               handlerExpr = {
+                 values$number <- input$idInputCP
+  })
+  
+  output$PRplot <- renderUI({
+    req(dfPR())
+    req(values$number)
+    PRdata(dfPR(),values$number)
   })
 }
 
