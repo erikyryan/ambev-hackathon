@@ -32,13 +32,17 @@
 
 2. passo: Clique na pasta `app`
 
-3. passo: Abra o documento `app.r`  
+3. passo: Abra o arquivo `app.r`  
 
-4. passo: No canto superior direito na mesma aba do documento clique em `Run App` e sua aplicação estará rodando 
+4. passo: No canto superior direito na mesma aba do arquivo clique em `Run App` e sua aplicação estará rodando 
 
 5. passo: Após a abertura da aplicação o usuário deve entrar com a planilha de dados referente aos seus pedidos
 
-6. passo: Clique no botão `Browse` e selecione o arquivo titulado de `DataGrande` presente na pasta do proprio projeto do GitHub, caminho do arquivo:`ambev-hackathon -> resources -> DataGrande` 
+6. passo: Clique no botão `Browse` e navegue ate a pasta resources: `ambev-hackathon -> resources` 
+
+7. passo: Os arquivos HW deveram ser usados para o metodo Holt Winter, e o PR utilizado para a Recomendação, ou metodo Apriore.
+
+8. passo: Clique no arquivo referente ao metodo que você estar testando e espere para o resultado ser gerado   
 
 ## Passo a Passo - por imagens
 
