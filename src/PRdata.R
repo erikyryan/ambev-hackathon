@@ -50,10 +50,9 @@ PRdata <- function(dfGrande,IdCliente)
   
   regras <- apriori(
     mydf,
-    parameter = list(support = 0.2,
-                     confidence = 0.5,
-                     minlen =2,
-                     maxlen = 5)
+    parameter = list(support = 0.01,
+                     confidence = 0.01,
+                     maxlen = 100)
   )
   
   plotFinal <- plot(regras,method = "graph",engine = "htmlwidget")
