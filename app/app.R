@@ -12,11 +12,11 @@ principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto"
                           
 )
 
-SobreNos <- htmlTemplate(filename = "../app/www/aboutUs.html", document_ = "auto"
+SobreNos <- htmlTemplate(filename = "../app/www/sobre.html", document_ = "auto"
 
 )
 
-cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.html", document_ = "auto",
+recomendacao <- htmlTemplate(filename = "../app/www/recomendacao.html", document_ = "auto",
                                    inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,accept = ".csv"),
                                    inputClientCP = numericInput("idInputCP",label = "Digite o Id:",value=0,width = validateCssUnit("25%")),
                                    PRplot = htmlOutput("PRplot",inline = FALSE),
@@ -24,15 +24,12 @@ cestaPersonalizada <- htmlTemplate(filename = "../app/www/cestaPersonalizada.htm
 
 router <- make_router(
   route("/", principal),
-  route("Cesta-personalizada", cestaPersonalizada),
+  route("recomendacao", recomendacao),
   route("Sobre-nos", SobreNos)
 )
 
 
 ui <- fluidPage(
-  
-  tags$head(tags$link(rel="icon", href="www/img/favicon.ico")),
-    
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
                     tags$a(href = route_link("/"),class="navbar-brand"),
@@ -45,7 +42,7 @@ ui <- fluidPage(
                                                tags$a(class="nav-link", href= route_link("/"),"Página Inicial")
                                       ),
                                       tags$li(class="nav-item",
-                                              tags$a(class="nav-link",href= route_link("Cesta-personalizada"),"Cesta personalizada")
+                                              tags$a(class="nav-link",href= route_link("recomendacao"),"Recomendação")
                                       ),
                                       tags$li(class="nav-item",
                                               tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós")
