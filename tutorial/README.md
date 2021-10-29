@@ -32,13 +32,13 @@
 
 2. passo: Clique na pasta `app`
 
-3. passo: Abra o documento `server.r`  
+3. passo: Abra o documento `app.r`  
 
 4. passo: No canto superior direito na mesma aba do documento clique em `Run App` e sua aplicação estará rodando 
 
 5. passo: Após a abertura da aplicação o usuário deve entrar com a planilha de dados referente aos seus pedidos
 
-6. passo: Clique no botão `calcular`  
+6. passo: Clique no botão `Browse` e selecione o arquivo titulado de `DataGrande` presente na pasta do proprio projeto do GitHub, caminho do arquivo:`ambev-hackathon -> resources -> DataGrande` 
 
 ## Passo a Passo - por imagens
 
