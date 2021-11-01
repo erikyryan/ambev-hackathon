@@ -32,10 +32,6 @@ router <- make_router(
 ui <- fluidPage(
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
-                    tags$a(href = route_link("/"),class="navbar-brand"),
-                    tags$button(class="navbar-toggler" ,type="button",
-                      tags$i(class="fas fa-align-justify")
-                          ),
                     tags$div(class="collapse navbar-collapse",id="navbarNav",
                              tags$ul( class ="navbar-nav ml-auto",
                                       tags$li( class="nav-item active",
