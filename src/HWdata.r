@@ -3,7 +3,7 @@ if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 if(!require(htmlwidgets)) install.packages("htmlwidgets");require(htmlwidgets)
 
-HWdata <- function(dfGrande) #passagem do dataframe
+HWdata <- function(dfGrande,tempoPrevisto = 36)
 {
   df <- dfGrande 
   df <- df %>%    #Limpeza de dados
@@ -27,12 +27,12 @@ HWdata <- function(dfGrande) #passagem do dataframe
   
   #formação do gráfico
   hw <- HoltWinters(dfTs)
-  hwPredict <- predict(hw, n.ahead = 36, prediction.interval = TRUE)
+  hwPredict <- predict(hw, n.ahead = tempoPrevisto, prediction.interval = TRUE) #n.head número de meses para ser previsto
   all <- cbind(dfTs, hwPredict)
   
   PlotHW <- dygraph(all, "Previsao de Demanda") %>%
     dySeries("dfTs", label = "Atual") %>%
-    dySeries(c("hwPredict.fit", "hwPredict.upr", "hwPredict.lwr"), label = "Previs")
+    dySeries(c("hwPredict.fit", "hwPredict.upr", "hwPredict.lwr"), label = "Previsto")
   
   saveWidget(PlotHW,"temp.html", selfcontained = FALSE)
 
