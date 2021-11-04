@@ -10,6 +10,8 @@ principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto"
                           inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui"
                                                   , multiple = FALSE, accept = ".csv"),
                           HWplot =  htmlOutput("HWplot",inline = FALSE),
+                          inputTime = numericInput("TimeHW", label = "Quantidade de Meses a serem previstos",
+                                                   value = 0,width = validateCssUnit("25%"))
                           
 )
 
@@ -69,9 +71,17 @@ server <- function(input, output,session) {
     read.csv(input$inputButton$datapath)      
   })
   
+  MesesTime <-reactiveValues()
+  
+  observeEvent(eventExpr = input$TimeHW,#IDcode
+               handlerExpr = {
+                 MesesTime$meses <- input$TimeHW
+               })
+  
   output$HWplot <- renderUI({
     req(df())
-    HWdata(df())
+    req(MesesTime$meses)
+    HWdata(df(),MesesTime$meses)
   })
   
   #########################

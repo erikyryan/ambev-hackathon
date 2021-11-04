@@ -3,8 +3,11 @@ if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 if(!require(htmlwidgets)) install.packages("htmlwidgets");require(htmlwidgets)
 
-HWdata <- function(dfGrande,tempoPrevisto = 36)
+HWdata <- function(dfGrande,tempoPrevisto)
 {
+  if(tempoPrevisto <= 0)
+    tempoPrevisto = 36;
+    
   df <- dfGrande 
   df <- df %>%    #Limpeza de dados
     mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% 
