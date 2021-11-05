@@ -6,8 +6,14 @@ if(!require(dygraphs)) install.packages("dygraphs");require(dygraphs)
 if(!require(arules)) install.packages("arules");require(arules)
 if(!require(dplyr)) install.packages("dplyr");require(dplyr)
 
-PRdata <- function(dfGrande,IdCliente)
+PRdata <- function(dfGrande,IdCliente,minRegras,maxRegras)
 {
+  if(minRegras <= 0)
+    minRegras = 2
+  if(maxRegras <= 0)
+    maxRegras = 5
+    
+  
   dataframe <- dfGrande 
   dataframe <- dataframe[,c('Doc..Date','Ship.to.nu','Subrand','Segment.LE')]
   dataframe <- dataframe %>% mutate_all(~ifelse(. %in% c("N/A", "null",""), NA, .)) %>% #remoção dos valores vazios
@@ -48,13 +54,16 @@ PRdata <- function(dfGrande,IdCliente)
   
   mydf <- as(df$whatever,"transactions")
   
+  #criação do algoritmo
   regras <- apriori(
     mydf,
     parameter = list(support = 0.01,
                      confidence = 0.01,
-                     maxlen = 100)
+                     minlen = minRegras,
+                     maxlen = maxRegras)
   )
   
+  #criação do plot
   plotFinal <- plot(regras,method = "graph",engine = "htmlwidget")
   return(plotFinal)
 }

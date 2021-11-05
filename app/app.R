@@ -7,8 +7,11 @@ source("../src/HWdata.r")
 source("../src/PRdata.r")
 
 principal <- htmlTemplate(filename = "../app/www/index.html", document_ = "auto", 
-                          inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui", multiple = FALSE, accept = ".csv"),
+                          inputButton = fileInput("inputButton",label = "Coloque o arquivo aqui"
+                                                  , multiple = FALSE, accept = ".csv"),
                           HWplot =  htmlOutput("HWplot",inline = FALSE),
+                          inputTime = numericInput("TimeHW", label = "Quantidade de Meses a serem previstos",
+                                                   value = 0,width = validateCssUnit("25%"))
                           
 )
 
@@ -17,8 +20,14 @@ SobreNos <- htmlTemplate(filename = "../app/www/sobre.html", document_ = "auto"
 )
 
 recomendacao <- htmlTemplate(filename = "../app/www/recomendacao.html", document_ = "auto",
-                                   inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", multiple = FALSE,accept = ".csv"),
-                                   inputClientCP = numericInput("idInputCP",label = "Digite o Id:",value=0,width = validateCssUnit("25%")),
+                                   inputFileCP = fileInput("dtInputCP", label = "Coloque o arquivo aqui", 
+                                                           multiple = FALSE,accept = ".csv"),
+                                   inputClientCP = numericInput("idInputCP",label = "Digite o Id:",
+                                                                value=0,width = validateCssUnit("25%")),
+                                   inputMaxCP = numericInput("MaxCP",label = "Máximo de ocorrências:",
+                                                             value=0,width = validateCssUnit("25%")),
+                                   inputMinCP = numericInput("MinCP",label = "Minimo de ocorrências:",
+                                                             value=0,width = validateCssUnit("25%")),
                                    PRplot = htmlOutput("PRplot",inline = FALSE),
 )
 
@@ -32,20 +41,19 @@ router <- make_router(
 ui <- fluidPage(
   tags$div(class="navbar navbar-expand-md",
            tags$div(class="container",
-                    tags$a(href = route_link("/"),class="navbar-brand"),
-                    tags$button(class="navbar-toggler" ,type="button",
-                      tags$i(class="fas fa-align-justify")
-                          ),
                     tags$div(class="collapse navbar-collapse",id="navbarNav",
                              tags$ul( class ="navbar-nav ml-auto",
                                       tags$li( class="nav-item active",
-                                               tags$a(class="nav-link", href= route_link("/"),"Página Inicial")
+                                               tags$a(class="nav-link", href= route_link("/"),
+                                                      "Página Inicial")
                                       ),
                                       tags$li(class="nav-item",
-                                              tags$a(class="nav-link",href= route_link("recomendacao"),"Recomendação")
+                                              tags$a(class="nav-link",href= route_link("recomendacao"),
+                                                     "Recomendação")
                                       ),
                                       tags$li(class="nav-item",
-                                              tags$a(class="nav-link",href= route_link("Sobre-nos"),"Sobre nós")
+                                              tags$a(class="nav-link",href= route_link("Sobre-nos"),
+                                                     "Sobre nós")
                                       )
                             )
                     )
@@ -63,9 +71,17 @@ server <- function(input, output,session) {
     read.csv(input$inputButton$datapath)      
   })
   
+  MesesTime <-reactiveValues()
+  
+  observeEvent(eventExpr = input$TimeHW,#IDcode
+               handlerExpr = {
+                 MesesTime$meses <- input$TimeHW
+               })
+  
   output$HWplot <- renderUI({
     req(df())
-    HWdata(df())
+    req(MesesTime$meses)
+    HWdata(df(),MesesTime$meses)
   })
   
   #########################
@@ -77,15 +93,25 @@ server <- function(input, output,session) {
   
   values <-reactiveValues()
   
-  observeEvent(eventExpr = input$idInputCP,
+  observeEvent(eventExpr = input$idInputCP,#IDcode
                handlerExpr = {
                  values$number <- input$idInputCP
   })
   
+  observeEvent(eventExpr = input$MinCP,#MinValue
+               handlerExpr = {values$number1 <- input$MinCP}
+               )
+  
+  observeEvent(eventExpr = input$MaxCP,#MaxValue
+               handlerExpr = {values$number2 <- input$MaxCP}
+  )
+  
   output$PRplot <- renderUI({
     req(dfPR())
     req(values$number)
-    PRdata(dfPR(),values$number)
+    req(values$number1)
+    req(values$number2)
+    PRdata(dfPR(),values$number,values$number1,values$number2)
   })
 }
 
